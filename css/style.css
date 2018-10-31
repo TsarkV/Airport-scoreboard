@@ -1,0 +1,357 @@
+html, body {
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+html{
+	background: linear-gradient(to top, #8ac, #fff) no-repeat center center fixed;
+	background-size: cover;
+}
+
+body{
+	overflow-x: hidden; 	
+}
+
+
+/* скрываем столбцы и сокращаем информацию при уменьшении ширины окна */
+@media screen and (max-width: 1005px){
+	.tableCell2 .airComp{
+		display: none;
+	}
+	#headTitle2, .tableCell2{
+		max-width: 78px !important;
+		min-width: 78px !important;
+	}
+	#flightsList{
+		min-width: 878px !important;
+	}
+}
+@media screen and (max-width: 895px){
+	#headTitle3 span, .tableCell3 span{
+		display: none;
+	}
+	#headTitle3, .tableCell3{
+		max-width: 58px !important;
+		min-width: 58px !important;
+	}
+	#flightsList{
+		min-width: 835px !important;
+	}
+}
+@media screen and (max-width: 852px) {
+	#headTitle5 span{
+		display: none;
+	}
+	#headTitle5, .tableCell5{
+		max-width: 58px !important;
+		min-width: 58px !important;
+	}
+	#flightsList{
+		min-width: 759px !important;
+	}
+}
+@media screen and (max-width: 777px) {
+	#headTitle6, .tableCell6{
+		max-width: 98px !important;
+		min-width: 98px !important;
+	}
+	#flightsList{
+		min-width: 723px !important;
+	}
+}
+@media screen and (max-width: 740px) {
+	#headTitle2, .tableCell2{
+		display: none;
+	}
+	#flightsList{
+		min-width: 635px !important;
+	}
+}
+@media screen and (max-width: 652px) {
+	#headTitle6, .tableCell6{
+		display: none;
+	}
+	#flightsList{
+		min-width: 527px !important;
+	}
+}
+@media screen and (max-width: 545px) {
+	#headTitle7, .tableCell7{
+		display: none;
+	}
+	#flightsList{
+		min-width: 375px !important;
+	}
+	table thead #headTitle5{
+		border-right: 1px solid #79b;
+	}
+}
+
+/* Скрываем строки с вылетами/прилетами при манипуляции с чекбоксом */
+#check-up:not(:checked) ~ * .flight-in{
+	display: none;
+}
+#check-in:not(:checked) ~ * .flight-up{
+	display: none;
+}
+
+/* Немного поднимаю контейнер, чтобы оставить место для чекбокса на заголовке и скрыть лишнюю часть заголовка */
+#container{
+	display: table;
+	position: relative;
+	margin: -18px auto 0 auto;
+}
+
+/* Фиксируем заголовок таблицы. z-index для отображения поверх строк таблицы */
+thead tr{
+	position: fixed;
+	z-index: 4;
+	box-shadow: 0 4px 5px -2px rgba(0,0,0,0.4);
+}
+
+#flightsList{
+	border-spacing: 0;
+	min-width: 988px;
+}
+
+/* Стили для заголовка таблицы */
+#flightsList thead td{
+	font: .85em Arial, sans-serif;
+	color: #fff;
+	letter-spacing: 0.9px;
+	padding: 5px;
+	height: 80px;
+	background-color: #f88;
+	text-align: center;
+	border-bottom: 1px solid #f88;
+}
+
+/* 	Названия столбцов:
+*
+*	headTitle1 - тип и номер рейса
+*	headTitle2 - авиакомпания и логотип
+*	headTitle3 - воздушное судно
+*	headTitle4 - аэропорт назначения
+*	headTitle5 - время вылети и прилета
+*	headTitle6 - примечания
+*	headTitle7 - статус рейса
+*
+*	Проставляем ширину столбцов при ширине экрана >1005px
+*/
+table thead #headTitle1{
+	border-left: 1px solid #79b;
+} 
+table thead #headTitle7{
+	border-right: 1px solid #79b;
+}
+table thead #headTitle1, table tbody .tableCell1{
+	max-width: 90px;
+	min-width: 90px;
+}
+table thead #headTitle2, table tbody .tableCell2{
+	max-width: 188px;
+	min-width: 188px;
+}
+table thead #headTitle3, table tbody .tableCell3{
+	max-width: 101px;
+	min-width: 101px;
+}
+table thead #headTitle4, table tbody .tableCell4{
+	max-width: 128px;
+	min-width: 128px
+}
+table thead #headTitle5, table tbody .tableCell5{
+	max-width: 134px;
+	min-width: 134px;
+}
+table thead #headTitle6, table tbody .tableCell6{
+	max-width: 134px;
+	min-width: 134px;
+}
+table thead #headTitle7, table tbody .tableCell7{
+	max-width: 141px;
+	min-width: 141px;
+}
+
+/* Шрифты у некоторых столбцов */
+table tbody .tableCell1, table tbody .tableCell2, table tbody .tableCell3, table tbody .tableCell4{
+	font-size: .8em !important;
+}
+
+/* Стиль логотипа авиакомпании */
+table tbody .tableCell2 img{
+	border-radius: 10px;
+	border: 1px solid #68a;
+}
+
+/* Indent - первая пустая строка. Нужна из-за фиксированного заголовка */
+#indent, #indent td{
+	height: 80px !important;
+	background: none !important;
+}
+
+#flightsList tbody tr td{
+	position: relative;
+	font: .9em Arial, sans-serif;
+	padding: 5px;
+	max-height: 82px;
+	height: 82px;
+	text-align: center;
+}
+
+/* Убираем стили у ссылок. Ссылки открывают popup окно */
+tbody td a:active, tbody td a:visited, tbody td a:hover, tbody td a{
+	display: block;
+	text-decoration: none;
+	color: #222;
+	min-height: 80px;
+}
+
+tr:hover{
+	background-color: #b88;
+}
+
+/* Стили для выделенных номера и статуса рейса */
+tr .tableCell1 span, tr .tableCell7 span{
+	display: inline-block;
+	padding: 3px 8px;
+	border: 1px solid #68a;
+	font-weight: 600;
+	border-radius: 50px;
+	background-color: #ddf;
+}
+
+/* Заливка градиентом фона таблицы */
+#flightsList{
+	background: repeating-linear-gradient(180deg, #fcc 90px, #fcc 182px, #fee 182px, #fee 274px);
+	overflow: hidden;
+}
+
+/* Логотип авиакомпании */
+.airComp img{
+	max-width: 180px;
+	max-height: 50px;
+	margin-bottom: 5px;
+}
+
+/* Позиционирование чекбоксов рядом с ссылками на них. z-index - отображаем выше заголовка таблицы*/
+#check-up, #check-in{
+	position: fixed;
+	top: 52px;
+	z-index: 6;
+	left: 50%
+}
+#check-up{
+	margin-left: 100px;
+}
+#check-in{
+	margin-left: -112px;
+}
+
+
+/* Позиционирование ссылок на чекбоксы */
+#in-up-text{
+	padding: 5px 30px;
+	position: fixed;
+	top: 46px;
+	font: .9em Arial, sans-serif;
+	z-index: 5;
+	left: 50%;
+	margin-left: -122px;
+	border-radius: 15px 15px 0 0;
+	background: #c55;
+}
+#in-up-text:hover{
+	background: #c55;
+}
+/* Фикс для фф - поднял чекбокс немного выше */
+@-moz-document url-prefix(){#in-up-text{top: 44px;}}
+
+/* Позиционирование текста о ненажатом чекбоксе */
+#descript{
+	display: none;
+	position: absolute;
+	top: 95px;
+	font: .9em Arial, sans-serif;
+}
+
+/* Отображение  текста о ненажатом чекбоксе */
+#check-up:not(:checked) + #check-in:not(:checked) ~ #descript{
+	display: block;
+}
+
+/* Меняем курсор у лейбла на указатель */
+label{
+	cursor: pointer;
+}
+
+/* Фикс для нормального отображения подсветки столбца */
+tbody {
+	opacity: 0.99;
+}
+
+/* Popup окна */
+.overlay {
+    background-color: rgba(0, 0, 0, 0.7);
+    bottom: 0;
+    cursor: default;
+    left: 0;
+    opacity: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+    visibility: hidden;
+    z-index: 7;
+}
+.overlay:target {
+    visibility: visible;
+    opacity: 1;
+}
+.popup {
+    background-color: #fff;
+    border: 3px solid #fff;
+    display: inline-block;
+    left: 50%;
+    margin-left: -190px;
+    opacity: 0;
+    padding: 15px;
+    position: fixed;
+    text-align: justify;
+	font: 14px Helvetica, Arial, Sans-Serif;
+    top: 25%;
+    visibility: hidden;
+    z-index: 10;
+}
+.overlay:target + .popup {
+    top: 25%;
+    opacity: 1;
+    visibility: visible;
+}
+.close {
+    background-color: rgba(0, 0, 0, 0.8);
+    height: 30px;
+    line-height: 30px;
+    position: absolute;
+    right: -3px;
+    top: -3px;
+    text-align: center;
+    text-decoration: none;
+    width: 30px;
+}
+.close:before {
+    color: rgba(255, 255, 255, 0.9);
+    content: "X";
+    font-size: 24px;
+    text-shadow: 0 -1px rgba(0, 0, 0, 0.9);
+}
+.close:hover {
+    background-color: rgba(128, 128, 128, 0.8);
+}
+.popup p, .popup div {
+    padding: 0px 5px 0px 5px;
+}
+.popup span{
+	font-weight: 600;
+}
